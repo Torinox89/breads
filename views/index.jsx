@@ -19,13 +19,13 @@ function Index ({breads, title})  {
     )
   })
 }
-
   </ul>
-</Default>
-
-      
-    )
+  <div className="newButton">
+  <a href="/breads/new"><button>Add a new bread</button></a>
+  </div>
+</Default>     
+    );
 }
 
-
 module.exports = Index
+
