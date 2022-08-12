@@ -1,6 +1,8 @@
 const React = require('react')
 const Default = require('./layouts/Default')
 
+
+
 function Show ({bread}) {
     // Confirm we are getting our bread data in the terminal.
     // console.log(bread.name)
@@ -23,5 +25,11 @@ function Show ({bread}) {
       )
   }
   
+  function Show ({bread, index}){
+ <form action={`/breads/${index}?_method=DELETE`} method="POST">
+  <input type='submit' value="DELETE"/>
+</form>
+  }
 
 module.exports = Show
+ 
