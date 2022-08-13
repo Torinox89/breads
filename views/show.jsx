@@ -27,6 +27,5 @@ function Show ({bread, index}) {
           </Default>
       )
   }
-  
-module.exports = Show
+ module.exports = Show
  
