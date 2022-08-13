@@ -3,8 +3,8 @@ const Default = require('./layouts/Default')
 
 
 
-function Show ({bread}) {
-    // Confirm we are getting our bread data in the terminal.
+function Show ({bread, index}) {
+  // Confirm we are getting our bread data in the terminal.
     // console.log(bread.name)
       return (
         <Default>
@@ -28,7 +28,5 @@ function Show ({bread}) {
       )
   }
   
- // Delete Form (be-5-restful-routes-delete)
-
 module.exports = Show
  
