@@ -1,7 +1,7 @@
 const React = require('react');
 const Default = require('./layouts/Default');
 
-
+//Set Up View for New Route
 function New () {
     return (
       <Default>

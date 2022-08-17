@@ -1,5 +1,7 @@
 const React = require('react')
 
+
+//Create an HTML Boilerplate
 function Default(html) {
   return (
     <html>
@@ -25,7 +27,5 @@ function Default(html) {
   )
 }
 
-  
-
-module.exports = Default
+  module.exports = Default
 
