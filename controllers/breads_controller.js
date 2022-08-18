@@ -30,23 +30,18 @@ breads.get('/:id/edit', (req, res) => {
     })
 })
 
-
-
 // Bread READ Route: 
-//  SHOW
+// SHOW
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
-    .then(foundBread => {
-      res.render('show', {
-        bread: foundBread
+      .then(foundBread => {
+        const bakedBy = foundBread.getBakedBy() 
+        console.log(bakedBy)
+        res.render('show', {
+            bread: foundBread
+        })
       })
     })
-    .catch(err => {
-      res.send('404')
-    })
-})
-
-
 
 // CREATE  Create a New POST Route in the Breads Controller
 // CREATE
