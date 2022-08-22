@@ -1,6 +1,8 @@
+//Dependencies
 const express = require('express')
 const breads = express.Router()
 const Bread = require('../models/bread.js')
+const Baker = require('../models/baker.js')
 
 // Bread READ Route:  'this is the Index at /breads'
 // INDEX
@@ -15,10 +17,16 @@ breads.get('/', (req, res) => {
 })
 
 
-// NEW 
+// in the new route
 breads.get('/new', (req, res) => {
-  res.render('new')
+  Baker.find()
+      .then(foundBakers => {
+          res.render('new', {
+              bakers: foundBakers
+          })
+    })
 })
+
 
 // EDIT
 breads.get('/:id/edit', (req, res) => {
