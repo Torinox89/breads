@@ -3,7 +3,6 @@ const express = require('express')
 const breads = express.Router()
 const Bread = require('../models/bread.js')
 const Baker = require('../models/baker.js')
-const breadSeedData = require('../models/seeds.js')
 
 // Bread READ Route:  'this is the Index at /breads'
 // INDEX
@@ -18,7 +17,7 @@ breads.get('/', (req, res) => {
 })
 
 
-// in the new route
+//New route
 breads.get('/new', (req, res) => {
   Baker.find()
       .then(foundBakers => {
@@ -43,14 +42,16 @@ breads.get('/:id/edit', (req, res) => {
 // SHOW
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
+      .populate('baker')
       .then(foundBread => {
-        const bakedBy = foundBread.getBakedBy() 
-        console.log(bakedBy)
         res.render('show', {
             bread: foundBread
         })
       })
-    })
+      .catch(err => {
+        res.send('404')
+      })
+})
 
 // CREATE  Create a New POST Route in the Breads Controller
 // CREATE
@@ -87,7 +88,6 @@ breads.put('/:id', (req, res) => {
       res.redirect(`/breads/${req.params.id}`) 
     })
 })
-
 
 
 module.exports = breads

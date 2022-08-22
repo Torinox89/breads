@@ -17,7 +17,7 @@ module.exports = [
     {
       name: 'Phoebe',
       startDate: '1996-09-19',
-      bio: 'Fierce protector of the bakery.'
+      bio: 'Fierce protector of the bakery\'smelly cat.'
     },
     {
       name: 'Chandler',
