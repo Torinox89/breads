@@ -28,15 +28,21 @@ breads.get('/new', (req, res) => {
 })
 
 
+
 // EDIT
 breads.get('/:id/edit', (req, res) => {
-  Bread.findById(req.params.id) 
-    .then(foundBread => { 
-      res.render('edit', {
-        bread: foundBread 
-      })
+  Baker.find()
+    .then(foundBakers => {
+        Bread.findById(req.params.id)
+          .then(foundBread => {
+            res.render('edit', {
+                bread: foundBread, 
+                bakers: foundBakers 
+            })
+          })
     })
 })
+
 
 // Bread READ Route: 
 // SHOW
@@ -44,6 +50,7 @@ breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
       .populate('baker')
       .then(foundBread => {
+        console.log(foundBread, "++")
         res.render('show', {
             bread: foundBread
         })
@@ -64,6 +71,7 @@ breads.post('/', (req, res) => {
   } else {
     req.body.hasGluten = false
   }
+  console.log(req.body, "---")
   Bread.create(req.body)
   res.redirect('/breads')
 })

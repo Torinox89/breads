@@ -4,6 +4,7 @@ const Default = require('./layouts/Default')
 
 //Add Bread Index View (sending index and whow data)
 function Index ({breads, title})  {
+  console.log(breads)
     return (
       <Default title={title}>
         <h2>Index Page</h2>
