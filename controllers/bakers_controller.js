@@ -31,10 +31,12 @@ baker.get('/:id', (req, res) => {
 // Index: 
 baker.get('/', (req, res) => {
     Baker.find()
+        .populate('breads')
         .then(foundBakers => {
             res.send(foundBakers)
         })
 })                    
+                    
 
 
 

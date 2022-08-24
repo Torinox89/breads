@@ -3,7 +3,7 @@ const Default = require('./layouts/Default')
 
 
 //Add Bread Index View (sending index and whow data)
-function Index ({breads, title})  {
+function Index ({breads, bakers, title})  {
   console.log(breads)
     return (
       <Default title={title}>
@@ -23,6 +23,20 @@ function Index ({breads, title})  {
           })
         }
         </ul>
+        <h3>Bakers</h3>
+        <ul>
+            {
+                bakers.map((baker)=> {
+                    return (
+                        <li key={baker.id}>
+                            <a href={`/bakers/${baker.id}`}>{baker.name}</a>
+                        </li>
+                    )
+                })
+            }
+        </ul>
+        <h3>Breads</h3>
+
         <div className="newButton">
         <a href="/breads/new"><button>Add a new bread</button></a>
         </div>

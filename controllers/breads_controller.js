@@ -5,16 +5,21 @@ const Bread = require('../models/bread.js')
 const Baker = require('../models/baker.js')
 
 // Bread READ Route:  'this is the Index at /breads'
-// INDEX
+// Index:
 breads.get('/', (req, res) => {
-  Bread.find()
+  Baker.find()
+    .then(foundBakers => {
+      Bread.find()
       .then(foundBreads => {
           res.render('index', {
               breads: foundBreads,
+              bakers: foundBakers,
               title: 'Index Page'
           })
       })
+    })
 })
+
 
 
 //New route
