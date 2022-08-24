@@ -6,20 +6,16 @@ const Baker = require('../models/baker.js')
 
 // Bread READ Route:  'this is the Index at /breads'
 // Index:
-breads.get('/', (req, res) => {
-  Baker.find()
-    .then(foundBakers => {
-      Bread.find()
-      .then(foundBreads => {
-          res.render('index', {
-              breads: foundBreads,
-              bakers: foundBakers,
-              title: 'Index Page'
-          })
-      })
-    })
+breads.get('/', async (req, res) => {
+  const foundBakers = await Baker.find()
+  const foundBreads = await Bread.find().limit(2)
+  console.log(foundBreads)
+  res.render('index', {
+    breads: foundBreads,
+    bakers: foundBakers,
+    title: 'Index Page'
+  })
 })
-
 
 
 //New route
@@ -47,8 +43,6 @@ breads.get('/:id/edit', (req, res) => {
           })
     })
 })
-
-
 
 
 // Bread READ Route: 
